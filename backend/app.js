@@ -11,13 +11,13 @@ const __dirname = path.resolve();
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN,
     credentials: true
   }));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:({
-        origin: 'http://localhost:5173',
+        origin: process.env.CORS_ORIGIN,
         credentials: true
     })
     
