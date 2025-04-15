@@ -1,0 +1,98 @@
+chat-app/
+├── backend/
+│   ├── config/
+│   │   └── db.js                 # MongoDB connection setup
+│
+│   ├── controllers/
+│   │   └── userController.js     # User login/signup logic
+│   │   └── messageController.js  # Message handling logic
+│
+│   ├── middleware/
+│   │   └── auth.js               # JWT auth middleware
+│   │   └── validate.js           # Joi validation middleware
+│
+│   ├── models/
+│   │   └── User.js               # User schema
+│   │   └── Message.js            # Message schema
+│
+│   ├── routes/
+│   │   └── userRoutes.js         # User routes (login/register)
+│   │   └── messageRoutes.js      # Chat/message routes
+│
+│   ├── socket/
+│   │   └── index.js              # Socket.io logic
+│
+│   ├── .env                      # Environment variables
+│   ├── server.js                # Main entry point
+│   ├── package.json
+│
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│
+│   ├── src/
+│   │   ├── assets/               # Images, icons
+│   │   ├── components/           
+│   │   │   └── ChatBox.jsx
+│   │   │   └── Message.jsx
+│   │   │   └── Navbar.jsx
+│   │   │   └── Sidebar.jsx
+│   │   │   └── UserList.jsx
+│   │
+│   │   ├── features/
+│   │   │   └── authStore.js      # Zustand for auth state
+│   │   │   └── chatStore.js      # Zustand for chat state
+│   │
+│   │   ├── pages/
+│   │   │   └── Login.jsx
+│   │   │   └── Register.jsx
+│   │   │   └── Chat.jsx
+│   │
+│   │   ├── utils/
+│   │   │   └── api.js            # api base config
+│   │   │   └── validators.js     # Joi validation schemas
+│   │   │   └── socket.js         # Socket client setup
+│   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── package.json
+│
+└── README.md
+
+
+import { useState } from 'react'
+import {Routes, Route} from "react-router-dom"
+import HomePage from "./components/HomePage.jsx";
+import Login from "./components/Login.jsx";
+import SignIn from "./components/SignIn.jsx";
+import Chat from "./components/Chat.jsx";
+import ChatWithUser from "./components/ChatWithUser.jsx";
+import Navbar from "./components/Navbar.jsx";
+
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+
+<Navbar/>
+    <Routes>
+
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/user/login" element={<Login />} />
+        <Route path="/user/signin" element={<SignIn />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/:userId" element={<ChatWithUser />} />
+
+    </Routes>
+      
+    </>
+  )
+}
+
+export default App
