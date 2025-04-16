@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const generateToken = (user, res)=>{
 const cookies_option = {
     httpOnly: true,
-    sameSite: "None",
+    sameSite: "None", 
     maxAge: 7*24*60*60*1000,
     secure: process.env.NODE_ENV === "production"  ? true : false 
 }
