@@ -8,7 +8,7 @@ const cookies_option = {
     httpOnly: true,
     sameSite: "Strict",
     maxAge: 7*24*60*60*1000,
-    secure: process.env.NODE_ENV === "production"  ? true : false
+    secure: process.env.NODE_ENV === "production"  ? true : false 
 }
 const token = jwt.sign({userId:user._id},
     JWT_SECRET,
